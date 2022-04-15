@@ -6,8 +6,8 @@ import './Expert.css'
 const Expert = ({ expert }) => {
     const { name, img } = expert;
     return (
-        <div className='col-12 col-md-6 col-lg-4'>
-            <Card style={{ width: '18rem' }}>
+        <div className='col-12 col-md-6 col-lg-4 text-center'>
+            <Card className='cardi' style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
