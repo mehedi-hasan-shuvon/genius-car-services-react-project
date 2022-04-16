@@ -18,10 +18,19 @@ const Login = () => {
     const passwordRef = useRef('');
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    let errorElement;
 
     const navigate = useNavigate();
     const navigateRegister = event => {
         navigate('/register')
+    }
+
+    if (error) {
+
+        errorElement = <div>
+            <p className='text-danger'>Error: {error?.message}</p>
+        </div>
+
     }
 
     // if user is found
@@ -57,6 +66,7 @@ const Login = () => {
                     Submit
                 </Button>
             </Form>
+            {errorElement}
             <p>New To Genius Car? <span onClick={navigateRegister} className='text-danger register-please'>Please Register</span></p>
 
             <SocialLogin></SocialLogin>
