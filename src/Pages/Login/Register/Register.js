@@ -7,8 +7,11 @@ const Register = () => {
         navigate('/login');
     }
 
-    const handelRegister=event=>{
+    const handelRegister = event => {
         event.preventDefault();
+        const email = event.target.email.value;
+        const name = event.target.name.value;
+        const password = event.target.password.value;
     }
     return (
         <div className='Register-form'>
