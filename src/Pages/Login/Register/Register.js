@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import './Register.css';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import Loading from '../../Shared/Loading/Loading';
 // import auth from '../../../firebase.init';
 
 const Register = () => {
@@ -38,7 +39,10 @@ const Register = () => {
         navigate('/home');
 
     }
-
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
+    
     if (user) {
         console.log("user found", user);
         // navigate('/home');
