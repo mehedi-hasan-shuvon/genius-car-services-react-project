@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import axios from 'axios';
+import useToken from '../../../hooks/useToken';
 
 
 const Login = () => {
@@ -48,6 +49,11 @@ const Login = () => {
 
     };
 
+    const [token] = useToken(user);
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
 
     if (loading || sending) {
         return <Loading></Loading>
@@ -69,11 +75,12 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('http://localhost:5000/login', { email });
-        console.log(data);
-        localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
+        // const { data } = await axios.post('https://nameless-peak-83594.herokuapp.com/login', { email });
+        // console.log(data);
+        // localStorage.setItem('accessToken', data.accessToken);
+
     }
+
 
     return (
         <div className='container w-50 mx-auto'>
